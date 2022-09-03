@@ -3,3 +3,4 @@ dwm
 config.h
 *.rej
 *.orig
+dwm.c.orig
