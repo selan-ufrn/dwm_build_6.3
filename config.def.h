@@ -6,6 +6,7 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const Bool viewontag         = True;     /* Switch view on tag switch. Comment line to turn it off */
 static const char *fonts[]          = { 
   "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true",
   "JetBrainsMono Nerd Font:style=Medium:pixelsize=14:antialias=true:autohint=true",
