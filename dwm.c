@@ -188,6 +188,7 @@ static void focusdir(const Arg *arg);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
+static void focusurgent(const Arg *arg);
 static void gap_copy(Gap *to, const Gap *from);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -1120,6 +1121,21 @@ focusstack(const Arg *arg)
 	if (c) {
 		focus(c);
 		restack(selmon);
+	}
+}
+
+static void
+focusurgent(const Arg *arg) {
+	Client *c;
+	int i;
+	for(c=selmon->clients; c && !c->isurgent; c=c->next);
+	if(c) {
+		for(i=0; i < LENGTH(tags) && !((1 << i) & c->tags); i++);
+		if(i < LENGTH(tags)) {
+			const Arg a = {.ui = 1 << i};
+			view(&a);
+			focus(c);
+		}
 	}
 }
 
