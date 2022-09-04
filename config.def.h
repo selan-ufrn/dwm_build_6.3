@@ -55,6 +55,8 @@ static const Layout layouts[] = {
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 	{ "[M]",      monocle },
+ 	{ "TTT",      bstack },
+ 	{ "===",      bstackhoriz },
  	{ NULL,       NULL },
 };
 
