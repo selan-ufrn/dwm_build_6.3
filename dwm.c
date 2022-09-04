@@ -2347,8 +2347,10 @@ view(const Arg *arg)
 	int i;
 	unsigned int tmptag;
 
-	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+ 	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags]) {
+ 		view(&((Arg) { .ui = 0 }));
 		return;
+	}
 	selmon->seltags ^= 1; /* toggle sel tagset */
 	if (arg->ui & TAGMASK) {
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
