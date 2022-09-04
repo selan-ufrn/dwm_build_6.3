@@ -94,68 +94,69 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_j,      pushdown,       {0} },
-	{ MODKEY|Mod1Mask,              XK_k,      pushup,         {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
-	{ MODKEY,                       XK_l,      focusdir,       {.i = 1 } }, // right
+	/* modifier                     key            function        argument */
+	{ MODKEY,                       XK_p,          spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,     spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,          togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_j,          rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,          rotatestack,    {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_j,          pushdown,       {0} },
+	{ MODKEY|Mod1Mask,              XK_k,          pushup,         {0} },
+	{ MODKEY,                       XK_j,          focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,          focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_h,          focusdir,       {.i = 0 } }, // left
+	{ MODKEY,                       XK_l,          focusdir,       {.i = 1 } }, // right
+	{ MODKEY,                       XK_Up,         focusdir,       {.i = 2 } }, // up
+	{ MODKEY,                       XK_Down,       focusdir,       {.i = 3 } }, // down
+	{ MODKEY,                       XK_i,          incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,          incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_h,          setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,          setmfact,       {.f = +0.05} },
+  { MODKEY,                       XK_m,          zoom,                   {0} },
+	{ MODKEY,                       XK_Tab,        view,           {0} },
+	{ MODKEY|ShiftMask,             XK_c,          killclient,     {0} },
+	{ MODKEY,                       XK_q,          killclient,     {0} },
+	{ MODKEY,                       XK_space,      cyclelayout,    {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_space,      cyclelayout,    {.i = +1 } },
+	{ MODKEY,                       XK_BackSpace,  togglefloating, {0} },
+ 	{ MODKEY,                       XK_s,          togglesticky,   {0} },
+	{ MODKEY,                       XK_0,          view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,          tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,      focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,     focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,      tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,     tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_minus,      setgaps,        {.i = -5 } },
+	{ MODKEY,                       XK_equal,      setgaps,        {.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_minus,      setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_equal,      setgaps,        {.i = GAP_TOGGLE} },
+ 	{ MODKEY|ALTKEY,            		XK_y,          togglescratch,  {.ui = 0 } },
+ 	{ MODKEY|ALTKEY,            		XK_u,          togglescratch,  {.ui = 1 } },
+ 	{ MODKEY|ALTKEY,            		XK_x,          togglescratch,  {.ui = 2 } },
+	TAGKEYS(                        XK_1,                          0)
+	TAGKEYS(                        XK_2,                          1)
+	TAGKEYS(                        XK_3,                          2)
+	TAGKEYS(                        XK_4,                          3)
+	TAGKEYS(                        XK_5,                          4)
+	TAGKEYS(                        XK_6,                          5)
+	TAGKEYS(                        XK_7,                          6)
+	TAGKEYS(                        XK_8,                          7)
+	TAGKEYS(                        XK_9,                          8)
+	{ MODKEY|ShiftMask,             XK_q,          quit,           {0} },
+	{ MODKEY,                       XK_u,          focusurgent,    {0} },
+};
+
+// ORIGINAL KEYBINDING
 	// { MODKEY,                       XK_Left,   focusdir,       {.i = 0 } }, // left
 	// { MODKEY,                       XK_Right,  focusdir,       {.i = 1 } }, // right
-	{ MODKEY,                       XK_Up,     focusdir,       {.i = 2 } }, // up
-	{ MODKEY,                       XK_Down,   focusdir,       {.i = 3 } }, // down
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
-  { MODKEY,                       XK_m,      zoom,                   {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_q,      killclient,     {0} },
 	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
 	// { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,                       XK_space,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_space,  cyclelayout,    {.i = +1 } },
  	// { MODKEY|ControlMask,       		 XK_comma,  cyclelayout,    {.i = -1 } },
  	// { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	// { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
- 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
- 	{ MODKEY|ALTKEY,            		XK_y,  	   togglescratch,  {.ui = 0 } },
- 	{ MODKEY|ALTKEY,            		XK_u,	     togglescratch,  {.ui = 1 } },
- 	{ MODKEY|ALTKEY,            		XK_x,	     togglescratch,  {.ui = 2 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,                       XK_u,      focusurgent,    {0} },
-};
-
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
