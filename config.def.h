@@ -249,6 +249,7 @@ static const Key keys[] = {
 	// { MODKEY|ShiftMask,             XK_Tab,        shiftviewclients,       { .i = -1 } },
 	{ MODKEY|ShiftMask,             XK_c,          killclient,     {0} },
 	{ MODKEY,                       XK_q,          killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,          spawn,          SHCMD("logout_window") },
 	{ MODKEY,                       XK_space,      cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_space,      cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_BackSpace,  togglefloating, {0} },
@@ -264,7 +265,6 @@ static const Key keys[] = {
   { MODKEY,                       XK_F2,        spawn,            SHCMD("toggle_lockscreen") },
   { MODKEY,                       XK_F3,        spawn,            SHCMD("blueman-manager") },
   { MODKEY,                       XK_F4,        spawn,            SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	// { MODKEY,                       XK_F5,        xrdb,             {.v = NULL } },
   { MODKEY,                       XK_F6,        spawn,            SHCMD("dmenu_displayselect") },
   { MODKEY,                       XK_F7,        spawn,            SHCMD("dmenu_networkmanager") },
   { MODKEY,                       XK_F8,        spawn,            SHCMD("toggle_dunst") },
@@ -284,7 +284,7 @@ static const Key keys[] = {
  	{ MODKEY,                   		XK_z,          togglescratch,  {.ui = 0 } },
  	{ MODKEY|ALTKEY,            		XK_r,          togglescratch,  {.ui = 1 } },
  	{ MODKEY|ALTKEY,            		XK_x,          togglescratch,  {.ui = 2 } },
-	{ MODKEY|ShiftMask,             XK_q,          quit,           {0} },
+	{ MODKEY|ALTKEY,                XK_q,          quit,           {0} },
 	{ MODKEY,                       XK_u,          focusurgent,    {0} },
 	TAGKEYS(                        XK_1,                          0)
 	TAGKEYS(                        XK_2,                          1)
