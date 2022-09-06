@@ -1,4 +1,12 @@
 /* See LICENSE file for copyright and license details. */
+/*
+ *  You obviously need the X11 development package installed, but here is the upstream copy
+ *  of this header if you can't bother using the contents of your own hard drive. ;-P
+ *  https://cgit.freedesktop.org/xorg/proto/x11proto/tree/XF86keysym.h
+ */
+#include <X11/XF86keysym.h>
+
+#define DEFAULT_TERM "st"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -10,7 +18,7 @@ static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 0;        /* vertical padding for statusbar */
-static const int user_bh            = 12;        /* 2 is the default spacing around the bar's font */
+static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
 static const Bool viewontag         = True;     /* Switch view on tag switch. Comment line to turn it off */
 static const char *fonts[]          = { 
   "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true",
@@ -19,18 +27,35 @@ static const char *fonts[]          = {
 	"Ubuntu Nerd Font:size=12",
   "monospace:size=10"
 };
-static const char dmenufont[]       = "Ubuntu Nerd Font:size=12";
+static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true";
+// static const char dmenufont[]       = "JetBrainsMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
+// static const char dmenufont[]       = "Ubuntu Nerd Font:size=12";
+// static const char dmenufont[]       = "VictorMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
+// static const char dmenufont[]       = "monospace:size=10";
+// static const char dmenufont[]       = "fontawesome:size=12";
+// static const char dmenufont[]       = "Hack:size=12:antialias=true:autohint=true";
+// static const char dmenufont[]       = "Mononoki:size=12:antialias=true:autohint=true";
+// static const char dmenufont[]       = "Terminus:size=18:weight=bold:size=18:antialias=true:hinting=true";
+// static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:weight=bold:size=18:antialias=true:hinting=true";
+// static const char dmenufont[]       = "3270medium nerd font:weight=bold:size=12:antialias=true:hinting=true";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+// static const char col_gray3[]       = "#bbbbbb";
+// static const char col_gray4[]       = "#eeeeee";
+// static const char col_cyan[]        = "#005577";
+static const char col_gray3[]       = "#FFAA00";
+static const char col_gray4[]       = "#FF9100";
+// static const char col_purple[]        = "#9D5CF1";
+static const char col_purple[]        = "#1D5CF1";
 static const char col_cyan[]        = "#005577";
-static const unsigned int baralpha = 0xd0;
+// static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0x40;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_purple },
+	// [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -53,30 +78,43 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { " ", " ", " ", "ﭮ ", " ", " ", " ", " ", " "};
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class				instance     title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",				NULL,        NULL,       0,            0,           1,           -1 },
-	{ "St",					NULL,        NULL,       0,            1,           0,           -1 },
-	{ "firefox",		NULL,        NULL,       1 << 1,       1,           0,           -1 },
-	{ "librewolf",  NULL,        NULL,       1 << 1,       1,           0,           -1 },
-	{ "Spotify",    NULL,        NULL,       1 << 8,       1,           0,           -1 },
-	{ "Sxiv",       NULL,        NULL,       0,            1,           1,           -1 },
-	{ NULL,		      "spterm",		 NULL,		   SPTAG(0),		 1,           1,			     -1 },
-	{ NULL,		      "spfm",		   NULL,		   SPTAG(1),		 1,           1,			     -1 },
-	{ NULL,		      "keepassxc", NULL,		   SPTAG(2),		 1,           0,			     -1 },
+	/* class                instance     title       tags mask     iscentered   isfloating   monitor */
+	{ "Gimp",               NULL,        NULL,           0,            0,           1,           -1 },
+	{ "St",                 NULL,        NULL,           0,            1,           0,           -1 },
+	{ "firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
+	{ "librewolf    ",      NULL,        NULL,           1 << 1,       1,           0,           -1 },
+	{ "Spotify",            NULL,        NULL,           1 << 8,       1,           0,           -1 },
+	{ "Sxiv",               NULL,        NULL,           0,            1,           1,           -1 },
+	{ "Blueman-manager",    NULL,        NULL,           0,            1,           1,           -1 },
+	{ "zoom",               NULL,        NULL,           0,            1,           1,           -1 },
+	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
+	{ NULL,                 NULL, "System Logout",       0,            1,           1,           -1 },
+	{ NULL,                 NULL, "Brave",               1 << 1,       1,           0,           -1 },
+	{ "Skype",              NULL,        NULL,           1 << 5,       1,           0,           -1 },
+	{ "librewolf",          NULL,        NULL,           1 << 1,       1,           0,           -1 },
+	{ "Firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
+	{ "telegram-desktop",   NULL,        NULL,           1 << 2,       1,           0,           -1 },
+	{ "discord",            NULL,        NULL,           1 << 3,       1,           0,           -1 },
+	{ "Evolution",          NULL,        NULL,           1 << 6,       1,           0,           -1 },
+	{ "Thunderbird",        NULL,        NULL,           1 << 6,       1,           0,           -1 },
+	{ "VirtualBox Manager", NULL,        NULL,           1 << 7,       1,           1,           -1 },
+	{ NULL,                 "spterm",		 NULL,           SPTAG(0),		 1,           1,			     -1 },
+	{ NULL,                 "spfm",		   NULL,           SPTAG(1),		 1,           1,			     -1 },
+	{ NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -104,38 +142,137 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = {
+	"dmenu_run",
+	"-m", dmenumon,
+	"-fn", dmenufont,
+	// "-nb", normbgcolor,
+	// "-nf", normfgcolor,
+	// "-sb", selbgcolor,
+	// "-sf", selfgcolor,
+    "-l" , "15",
+    "-c" , NULL,
+	NULL
+};
+
+//== st
 static const char *termcmd[]  = { "st", NULL };
+//== alacritty
+static const char *term2cmd[]  = { "alacritty", NULL };
+//== kitty
+static const char *term3cmd[]  = { "kitty", NULL };
+//== firefox
+// static const char *firefox_cmd[]  = { "firefox", NULL };
+//== brave
+// static const char *brave_cmd[]  = { "brave", NULL };
+//== librewolf
+static const char *librewolf_cmd[]  = { "librewolf", NULL };
+//== pcmanfm 
+// static const char *filemgr_cmd[]  = { "pcmanfm", NULL };
+static const char *filemgr_cmd[]  = { "thunar", NULL };
+//== thunderbird
+// static const char *mail_cmd[]  = { "thunderbird", NULL };
+// static const char *mail_cmd[]  = { "mailspring", NULL };
+static const char *mail_cmd[]  = { "evolution", NULL };
+//== discord
+static const char *discord_cmd[]  = { "discord", NULL };
+//== keepassxc
+// static const char *keepass_cmd[]  = { "keepassxc", NULL };
+//== spotify
+static const char *spotify_cmd[]  = { "spotify", NULL };
+//== sxiv to change background and dwm's colorscheme:
+// After app runs, choose the new background and then type
+// Ctrl-x + Ctrl-w
+// This calls a script that calls pywall and sets background with xwallpaper.
+// After that, press MODKEY+Fn+F5 to reload color scheme based on xrbd
+// static const char *sxiv_cmd[]  = { "sxiv -t /home/selan/Pictures/wallpapers", NULL };
+
 
 static const Key keys[] = {
 	/* modifier                     key            function        argument */
 	{ MODKEY,                       XK_p,          spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_d,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,     spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = term2cmd } },
+	{ MODKEY|ALTKEY,                XK_Return,     spawn,                  {.v = term3cmd } },
+  { MODKEY,                       XK_c,          spawn,                  SHCMD("toggle_conky") },
+	{ MODKEY|Mod1Mask,              XK_4,          spawn,                  SHCMD("scshot -s $HOME/Pictures/screenshots/") },
+	{ MODKEY,                       XK_t,          spawn,                  SHCMD("toggle_picom") },
+	{ MODKEY,                       XK_a,          spawn,                  SHCMD("toggle_systray") },
+
+    //== Keybindings for programs using the format SUPER + ALT + "key"
+	{ ControlMask|ALTKEY,         XK_b,          spawn,                  {.v = librewolf_cmd } },
+	{ ControlMask|ALTKEY,         XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ ControlMask|ALTKEY,         XK_d,          spawn,                  {.v = discord_cmd} },
+	{ ControlMask|ALTKEY,         XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
+	{ ControlMask|ALTKEY,         XK_f,          spawn,                  {.v = filemgr_cmd} },
+	// { ControlMask|ALTKEY,         XK_k,          spawn,                  {.v = keepass_cmd} },
+	{ ControlMask|ALTKEY,         XK_l,          spawn,                  SHCMD("xautolock -locknow") },
+	{ ControlMask|ALTKEY,         XK_m,          spawn,                  {.v = mail_cmd} },
+  // { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e ranger") },
+	// { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e lf") },
+	{ ControlMask|ALTKEY,         XK_o,          spawn,                  SHCMD("openboard") },
+	{ ControlMask|ALTKEY,         XK_s,          spawn,                  {.v = spotify_cmd} },
+  { ControlMask|ALTKEY,         XK_t,          spawn,                  SHCMD("system-monitoring-center") },
+	{ ControlMask|ALTKEY,         XK_v,          spawn,                  SHCMD("pavucontrol") },
+
+    //== Brightness and volume control
+    { 0,                            XF86XK_AudioLowerVolume,  spawn,       SHCMD("vol_lower") },
+    { 0,                            XF86XK_AudioRaiseVolume,  spawn,       SHCMD("vol_raise") },
+    { 0,                            XF86XK_AudioMute,         spawn,       SHCMD("toggle_vol_mute") },
+    { 0,                            XF86XK_MonBrightnessUp,   spawn,       SHCMD("mon_brightness_up") },
+    { 0,                            XF86XK_MonBrightnessDown, spawn,       SHCMD("mon_brightness_down") },
+    { 0,                            XF86XK_KbdBrightnessUp,   spawn,       SHCMD("kbd_brightness_up") },
+    { 0,                            XF86XK_KbdBrightnessDown, spawn,       SHCMD("kbd_brightness_down") },
+
+    //== Client Manipulation.
 	{ MODKEY,                       XK_b,          togglebar,      {0} },
-	{ MODKEY|ShiftMask,             XK_j,          rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,          rotatestack,    {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_j,          pushdown,       {0} },
-	{ MODKEY|Mod1Mask,              XK_k,          pushup,         {0} },
 	{ MODKEY,                       XK_j,          focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,          rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,          rotatestack,    {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_h,          setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,             XK_l,          setmfact,       {.f = +0.05} },
+	{ MODKEY|ALTKEY,                XK_j,          pushdown,       {0} },
+	{ MODKEY|ALTKEY,                XK_k,          pushup,         {0} },
 	{ MODKEY,                       XK_h,          focusdir,       {.i = 0 } }, // left
 	{ MODKEY,                       XK_l,          focusdir,       {.i = 1 } }, // right
 	{ MODKEY,                       XK_Up,         focusdir,       {.i = 2 } }, // up
 	{ MODKEY,                       XK_Down,       focusdir,       {.i = 3 } }, // down
 	{ MODKEY,                       XK_i,          incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,          incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_h,          setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_l,          setmfact,       {.f = +0.05} },
   { MODKEY,                       XK_m,          zoom,                   {0} },
 	{ MODKEY,                       XK_Tab,        view,           {0} },
+	// { MODKEY,                       XK_Tab,        shiftviewclients,       { .i = +1 } },
+	// { MODKEY|ShiftMask,             XK_Tab,        shiftviewclients,       { .i = -1 } },
 	{ MODKEY|ShiftMask,             XK_c,          killclient,     {0} },
 	{ MODKEY,                       XK_q,          killclient,     {0} },
 	{ MODKEY,                       XK_space,      cyclelayout,    {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_space,      cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_BackSpace,  togglefloating, {0} },
+ 	{ MODKEY|ShiftMask,             XK_f,          togglefullscr,  {0} },
  	{ MODKEY,                       XK_s,          togglesticky,   {0} },
-	{ MODKEY,                       XK_0,          view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,          tag,            {.ui = ~0 } },
+	// { MODKEY,                       XK_0,          view,           {.ui = ~0 } },
+	// { MODKEY|ShiftMask,             XK_0,          tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_0,          view,                   {.ui = ~SPTAGMASK } },
+	{ MODKEY|ShiftMask,             XK_0,          tag,                    {.ui = ~SPTAGMASK } },
+
+  //== Fn Keys.
+  { MODKEY,                       XK_F1,        spawn,            SHCMD("groff -mom -tbl $HOME/.local/share/dwm/system_help.mom -Tpdf | zathura -") },
+  { MODKEY,                       XK_F2,        spawn,            SHCMD("toggle_lockscreen") },
+  { MODKEY,                       XK_F3,        spawn,            SHCMD("blueman-manager") },
+  { MODKEY,                       XK_F4,        spawn,            SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
+	// { MODKEY,                       XK_F5,        xrdb,             {.v = NULL } },
+  { MODKEY,                       XK_F6,        spawn,            SHCMD("dmenu_displayselect") },
+  { MODKEY,                       XK_F7,        spawn,            SHCMD("dmenu_networkmanager") },
+  { MODKEY,                       XK_F8,        spawn,            SHCMD("toggle_dunst") },
+  { MODKEY,                       XK_F9,        spawn,            SHCMD("toggle_wifi") },
+  { MODKEY,                       XK_F10,       spawn,            SHCMD("toggle_bluetooth") },
+  { MODKEY,                       XK_F11,       spawn,            SHCMD("toggle_screenkey") },
+  { MODKEY,                       XK_F12,       spawn,            SHCMD("single_monitor") },
+
 	{ MODKEY,                       XK_comma,      focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period,     focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,      tagmon,         {.i = -1 } },
@@ -144,9 +281,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_equal,      setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_minus,      setgaps,        {.i = GAP_RESET } },
 	{ MODKEY|ShiftMask,             XK_equal,      setgaps,        {.i = GAP_TOGGLE} },
- 	{ MODKEY|ALTKEY,            		XK_y,          togglescratch,  {.ui = 0 } },
- 	{ MODKEY|ALTKEY,            		XK_u,          togglescratch,  {.ui = 1 } },
+ 	{ MODKEY,                   		XK_z,          togglescratch,  {.ui = 0 } },
+ 	{ MODKEY|ALTKEY,            		XK_r,          togglescratch,  {.ui = 1 } },
  	{ MODKEY|ALTKEY,            		XK_x,          togglescratch,  {.ui = 2 } },
+	{ MODKEY|ShiftMask,             XK_q,          quit,           {0} },
+	{ MODKEY,                       XK_u,          focusurgent,    {0} },
 	TAGKEYS(                        XK_1,                          0)
 	TAGKEYS(                        XK_2,                          1)
 	TAGKEYS(                        XK_3,                          2)
@@ -156,8 +295,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                          6)
 	TAGKEYS(                        XK_8,                          7)
 	TAGKEYS(                        XK_9,                          8)
-	{ MODKEY|ShiftMask,             XK_q,          quit,           {0} },
-	{ MODKEY,                       XK_u,          focusurgent,    {0} },
 };
 
 // ORIGINAL KEYBINDING
@@ -170,7 +307,8 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
  	// { MODKEY|ControlMask,       		 XK_comma,  cyclelayout,    {.i = -1 } },
  	// { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },j
+
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
