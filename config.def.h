@@ -46,7 +46,8 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#FFAA00";
 static const char col_gray4[]       = "#FF9100";
 // static const char col_purple[]        = "#9D5CF1";
-static const char col_purple[]        = "#1D5CF1";
+// static const char col_purple[]        = "#1D5CF1";
+static const char col_purple[]        = "#008ECF";
 static const char col_cyan[]        = "#005577";
 // static const unsigned int baralpha = 0xd0;
 static const unsigned int baralpha = 0x40;
@@ -214,6 +215,7 @@ static const Key keys[] = {
   // { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e ranger") },
 	// { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e lf") },
 	{ ControlMask|ALTKEY,         XK_o,          spawn,                  SHCMD("openboard") },
+	{ ControlMask|ALTKEY,         XK_p,          spawn,                  SHCMD("toggle_xpad") },
 	{ ControlMask|ALTKEY,         XK_s,          spawn,                  {.v = spotify_cmd} },
   { ControlMask|ALTKEY,         XK_t,          spawn,                  SHCMD("system-monitoring-center") },
 	{ ControlMask|ALTKEY,         XK_v,          spawn,                  SHCMD("pavucontrol") },
