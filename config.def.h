@@ -287,6 +287,7 @@ static const Key keys[] = {
  	{ MODKEY|ALTKEY,            		XK_r,          togglescratch,  {.ui = 1 } },
  	{ MODKEY|ALTKEY,            		XK_x,          togglescratch,  {.ui = 2 } },
 	{ MODKEY|ALTKEY,                XK_q,          quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,           {1} }, 
 	{ MODKEY,                       XK_u,          focusurgent,    {0} },
 	TAGKEYS(                        XK_1,                          0)
 	TAGKEYS(                        XK_2,                          1)
