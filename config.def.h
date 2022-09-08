@@ -43,14 +43,14 @@ static const char col_gray2[]       = "#444444";
 // static const char col_gray3[]       = "#bbbbbb";
 // static const char col_gray4[]       = "#eeeeee";
 // static const char col_cyan[]        = "#005577";
-static const char col_gray3[]       = "#FFAA00";
+static const char col_gray3[]       = "#FF9100";
 static const char col_gray4[]       = "#FF9100";
 // static const char col_purple[]        = "#9D5CF1";
 // static const char col_purple[]        = "#1D5CF1";
 static const char col_purple[]        = "#008ECF";
 static const char col_cyan[]        = "#005577";
-// static const unsigned int baralpha = 0xd0;
-static const unsigned int baralpha = 0x40;
+static const unsigned int baralpha = 0xd0;
+// static const unsigned int baralpha = 0x40;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -204,30 +204,30 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,          spawn,                  SHCMD("toggle_systray") },
 
     //== Keybindings for programs using the format SUPER + ALT + "key"
-	{ ControlMask|ALTKEY,         XK_b,          spawn,                  {.v = librewolf_cmd } },
-	{ ControlMask|ALTKEY,         XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
-	{ ControlMask|ALTKEY,         XK_d,          spawn,                  {.v = discord_cmd} },
-	{ ControlMask|ALTKEY,         XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
-	{ ControlMask|ALTKEY,         XK_f,          spawn,                  {.v = filemgr_cmd} },
-	// { ControlMask|ALTKEY,         XK_k,          spawn,                  {.v = keepass_cmd} },
-	{ ControlMask|ALTKEY,         XK_l,          spawn,                  SHCMD("xautolock -locknow") },
-	{ ControlMask|ALTKEY,         XK_m,          spawn,                  {.v = mail_cmd} },
-  // { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e ranger") },
-	// { ControlMask|ALTKEY,         XK_n,          spawn,                  SHCMD("st -e lf") },
-	{ ControlMask|ALTKEY,         XK_o,          spawn,                  SHCMD("openboard") },
-	{ ControlMask|ALTKEY,         XK_p,          spawn,                  SHCMD("toggle_xpad") },
-	{ ControlMask|ALTKEY,         XK_s,          spawn,                  {.v = spotify_cmd} },
-  { ControlMask|ALTKEY,         XK_t,          spawn,                  SHCMD("system-monitoring-center") },
-	{ ControlMask|ALTKEY,         XK_v,          spawn,                  SHCMD("pavucontrol") },
+	{ ControlMask|ALTKEY,           XK_b,          spawn,                  {.v = librewolf_cmd } },
+	{ ControlMask|ALTKEY,           XK_c,          spawn,                  SHCMD("sxiv -t $HOME/Pictures/wallpapers") },
+	{ ControlMask|ALTKEY,           XK_d,          spawn,                  {.v = discord_cmd} },
+	{ ControlMask|ALTKEY,           XK_e,          spawn,                  SHCMD("flameshot gui -p $HOME/Pictures/screenshots/") },
+	{ ControlMask|ALTKEY,           XK_f,          spawn,                  {.v = filemgr_cmd} },
+ 	{ ControlMask|ALTKEY,           XK_k,          togglescratch,          {.ui = 2 } },
+	{ ControlMask|ALTKEY,           XK_l,          spawn,                  SHCMD("xautolock -locknow") },
+	{ ControlMask|ALTKEY,           XK_m,          spawn,                  {.v = mail_cmd} },
+	{ ControlMask|ALTKEY,           XK_o,          spawn,                  SHCMD("openboard") },
+	{ ControlMask|ALTKEY,           XK_p,          spawn,                  SHCMD("toggle_xpad") },
+ 	{ ControlMask|ALTKEY,           XK_r,          togglescratch,          {.ui = 1 } },
+	{ ControlMask|ALTKEY,           XK_s,          spawn,                  {.v = spotify_cmd} },
+  { ControlMask|ALTKEY,           XK_t,          spawn,                  SHCMD("system-monitoring-center") },
+	{ ControlMask|ALTKEY,           XK_v,          spawn,                  SHCMD("pavucontrol") },
+ 	{ MODKEY,                       XK_z,          togglescratch,          {.ui = 0 } },
 
-    //== Brightness and volume control
-    { 0,                            XF86XK_AudioLowerVolume,  spawn,       SHCMD("vol_lower") },
-    { 0,                            XF86XK_AudioRaiseVolume,  spawn,       SHCMD("vol_raise") },
-    { 0,                            XF86XK_AudioMute,         spawn,       SHCMD("toggle_vol_mute") },
-    { 0,                            XF86XK_MonBrightnessUp,   spawn,       SHCMD("mon_brightness_up") },
-    { 0,                            XF86XK_MonBrightnessDown, spawn,       SHCMD("mon_brightness_down") },
-    { 0,                            XF86XK_KbdBrightnessUp,   spawn,       SHCMD("kbd_brightness_up") },
-    { 0,                            XF86XK_KbdBrightnessDown, spawn,       SHCMD("kbd_brightness_down") },
+  //== Brightness and volume control
+  { 0,                  XF86XK_AudioLowerVolume,  spawn,       SHCMD("vol_lower") },
+  { 0,                  XF86XK_AudioRaiseVolume,  spawn,       SHCMD("vol_raise") },
+  { 0,                  XF86XK_AudioMute,         spawn,       SHCMD("toggle_vol_mute") },
+  { 0,                  XF86XK_MonBrightnessUp,   spawn,       SHCMD("mon_brightness_up") },
+  { 0,                  XF86XK_MonBrightnessDown, spawn,       SHCMD("mon_brightness_down") },
+  { 0,                  XF86XK_KbdBrightnessUp,   spawn,       SHCMD("kbd_brightness_up") },
+  { 0,                  XF86XK_KbdBrightnessDown, spawn,       SHCMD("kbd_brightness_down") },
 
     //== Client Manipulation.
 	{ MODKEY,                       XK_b,          togglebar,      {0} },
@@ -279,13 +279,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period,     focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,      tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,     tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,      setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,      setgaps,        {.i = +5 } },
+	{ MODKEY,                       XK_minus,      setgaps,        {.i = -2 } },
+	{ MODKEY,                       XK_equal,      setgaps,        {.i = +2 } },
 	{ MODKEY|ShiftMask,             XK_minus,      setgaps,        {.i = GAP_RESET } },
 	{ MODKEY|ShiftMask,             XK_equal,      setgaps,        {.i = GAP_TOGGLE} },
- 	{ MODKEY,                   		XK_z,          togglescratch,  {.ui = 0 } },
- 	{ MODKEY|ALTKEY,            		XK_r,          togglescratch,  {.ui = 1 } },
- 	{ MODKEY|ALTKEY,            		XK_x,          togglescratch,  {.ui = 2 } },
 	{ MODKEY|ALTKEY,                XK_q,          quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,           {1} }, 
 	{ MODKEY,                       XK_u,          focusurgent,    {0} },
