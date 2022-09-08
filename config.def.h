@@ -6,6 +6,8 @@
  */
 #include <X11/XF86keysym.h>
 
+#include "colors/stock.h" // Custom colors.
+
 #define DEFAULT_TERM "st"
 
 /* appearance */
@@ -38,26 +40,16 @@ static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antia
 // static const char dmenufont[]       = "Terminus:size=18:weight=bold:size=18:antialias=true:hinting=true";
 // static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:weight=bold:size=18:antialias=true:hinting=true";
 // static const char dmenufont[]       = "3270medium nerd font:weight=bold:size=12:antialias=true:hinting=true";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-// static const char col_gray3[]       = "#bbbbbb";
-// static const char col_gray4[]       = "#eeeeee";
-// static const char col_cyan[]        = "#005577";
-static const char col_gray3[]       = "#FF9100";
-static const char col_gray4[]       = "#FF9100";
-// static const char col_purple[]        = "#9D5CF1";
-// static const char col_purple[]        = "#1D5CF1";
-static const char col_purple[]        = "#008ECF";
-static const char col_cyan[]        = "#005577";
-static const unsigned int baralpha = 0xd0;
-// static const unsigned int baralpha = 0x40;
+
+// ====================================================
+// Now Colors come from colors/stock.h
+// See that header to lear how to customize colors.
+// ====================================================
+
+// static const unsigned int baralpha = 0xd0;
+// static const unsigned int baralpha = 0x60;
+static const unsigned int baralpha = 0xEE;
 static const unsigned int borderalpha = OPAQUE;
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_purple },
-	// [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
