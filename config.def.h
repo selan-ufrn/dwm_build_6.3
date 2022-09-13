@@ -20,12 +20,12 @@ static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 0;        /* vertical padding for statusbar */
-static const int user_bh            = 10;        /* 2 is the default spacing around the bar's font */
-static const Bool viewontag         = True;     /* Switch view on tag switch. Comment line to turn it off */
+static const int user_bh            = 10;       /* 2 is the default spacing around the bar's font */
+static const Bool viewontag         = False;    /* Switch view on tag switch. Comment line to turn it off */
 static const char *fonts[]          = { 
-  "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true",
+  "Fira Code:style=Medium:pixelsize=20:antialias=true:autohint=true",
+  "VictorMono Nerd Font:style=Medium:pixelsize=20:antialias=true:autohint=true",
   "JetBrainsMono Nerd Font:style=Medium:pixelsize=14:antialias=true:autohint=true",
-  "VictorMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true",
 	"Ubuntu Nerd Font:size=12",
   "monospace:size=10"
 };
@@ -71,8 +71,10 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { " ", " ", " ", "ﭮ ", " ", " ", " ", " ", " "};
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+// static const char *tags[] = { "", "", "", "", "", "", "", "", ""};
+// static const char *tags[] = { " ", " ", " ", "ﭮ ", " ", " ", " ", " ", " "};
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -90,7 +92,7 @@ static const Rule rules[] = {
 	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ NULL,                 NULL, "System Logout",       0,            1,           1,           -1 },
 	{ NULL,                 NULL, "Brave",               1 << 1,       1,           0,           -1 },
-	{ "Skype",              NULL,        NULL,           1 << 5,       1,           0,           -1 },
+	{ "Skype",              NULL,        NULL,           1 << 5,       1,           1,           -1 },
 	{ "librewolf",          NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "Firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "telegram-desktop",   NULL,        NULL,           1 << 2,       1,           0,           -1 },
