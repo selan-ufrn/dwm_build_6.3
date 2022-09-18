@@ -12,7 +12,7 @@ This is my custom build of DWM with some patches.
 + bottomstack
 + center
 + centeredmaster
-+ centerwindowname
++ centerwindowname (removed)
 + cyclelayouts
 + fixborders alpha
 + focusdir
@@ -29,5 +29,5 @@ This is my custom build of DWM with some patches.
 + statuspadding
 + sticky
 + toggletag
-+ viewontag
++ viewontag (removed)
 + zoomswap
