@@ -5,6 +5,7 @@ include config.mk
 
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
+CC = clang
 
 all: options dwm
 

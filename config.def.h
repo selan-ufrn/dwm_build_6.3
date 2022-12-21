@@ -23,15 +23,15 @@ static const int vertpadbar         = 0;        /* vertical padding for statusba
 static const int user_bh            = 10;       /* 2 is the default spacing around the bar's font */
 static const Bool viewontag         = False;    /* Switch view on tag switch. Comment line to turn it off */
 static const char *fonts[]          = { 
-  "Fira Code:style=Medium:pixelsize=20:antialias=true:autohint=true",
-  "VictorMono Nerd Font:style=Medium:pixelsize=20:antialias=true:autohint=true",
+  "Ubuntu Nerd Font:size=12",
   "JetBrainsMono Nerd Font:style=Medium:pixelsize=14:antialias=true:autohint=true",
-	"Ubuntu Nerd Font:size=12",
+  "VictorMono Nerd Font:style=Medium:pixelsize=20:antialias=true:autohint=true",
+  "Fira Code:style=Medium:pixelsize=20:antialias=true:autohint=true",
   "monospace:size=10"
 };
-static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true";
+//static const char dmenufont[]       = "Fira Code:style=Medium:pixelsize=18:antialias=true:autohint=true";
 // static const char dmenufont[]       = "JetBrainsMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
-// static const char dmenufont[]       = "Ubuntu Nerd Font:size=12";
+ static const char dmenufont[]       = "Ubuntu Nerd Font:size=12";
 // static const char dmenufont[]       = "VictorMono Nerd Font:style=Medium:pixelsize=18:antialias=true:autohint=true";
 // static const char dmenufont[]       = "monospace:size=10";
 // static const char dmenufont[]       = "fontawesome:size=12";
@@ -60,13 +60,14 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd1[] = {"kitty", "-T", "spterm",  NULL };
+//const char *spcmd2[] = {"kitty", "-T", "spfm", "-e", "ranger", NULL };
+const char *spcmd2[] = {"kitty", "-T", "spfm",  "-e", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
+	{"spfm",    spcmd2},
 	{"keepassxc",   spcmd3},
 };
 
@@ -83,15 +84,13 @@ static const Rule rules[] = {
 	/* class                instance     title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",               NULL,        NULL,           0,            0,           1,           -1 },
 	{ "St",                 NULL,        NULL,           0,            1,           0,           -1 },
-	{ "firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
-	{ "librewolf    ",      NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "Spotify",            NULL,        NULL,           1 << 8,       1,           0,           -1 },
 	{ "Sxiv",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "Blueman-manager",    NULL,        NULL,           0,            1,           1,           -1 },
 	{ "zoom",               NULL,        NULL,           0,            1,           1,           -1 },
 	{ "xpad",               NULL,        NULL,           0,            1,           1,           -1 },
-	{ NULL,                 NULL, "System Logout",       0,            1,           1,           -1 },
-	{ NULL,                 NULL, "Brave",               1 << 1,       1,           0,           -1 },
+	{ NULL,                 NULL,        "System Logout",       0,            1,           1,           -1 },
+	{ NULL,                 NULL,        "Brave",               1 << 1,       1,           0,           -1 },
 	{ "Skype",              NULL,        NULL,           1 << 5,       1,           1,           -1 },
 	{ "librewolf",          NULL,        NULL,           1 << 1,       1,           0,           -1 },
 	{ "Firefox",            NULL,        NULL,           1 << 1,       1,           0,           -1 },
@@ -101,8 +100,8 @@ static const Rule rules[] = {
 	{ "Thunderbird",        NULL,        NULL,           1 << 6,       1,           0,           -1 },
 	{ "VirtualBox Manager", NULL,        NULL,           1 << 7,       1,           1,           -1 },
 	// { "mpv",                NULL,        NULL,           0,            1,           1,           -1 },
-	{ NULL,                 "spterm",		 NULL,           SPTAG(0),		 1,           1,			     -1 },
-	{ NULL,                 "spfm",		   NULL,           SPTAG(1),		 1,           1,			     -1 },
+	{ NULL,                 "spterm",    NULL,           SPTAG(0),		 1,           1,			     -1 },
+	{ NULL,                 "spfm",	     NULL,           SPTAG(1),		 1,           1,			     -1 },
 	{ NULL,                 "keepassxc", NULL,           SPTAG(2),		 1,           1,			     -1 },
 };
 
@@ -154,11 +153,11 @@ static const char *dmenucmd[] = {
 };
 
 //== st
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 //== alacritty
 static const char *term2cmd[]  = { "alacritty", NULL };
 //== kitty
-static const char *term3cmd[]  = { "kitty", NULL };
+static const char *term3cmd[]  = { "st", NULL };
 //== firefox
 // static const char *firefox_cmd[]  = { "firefox", NULL };
 //== brave
